@@ -2,6 +2,14 @@
   @tailwind components;
   @tailwind utilities;
 
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #f8f0ff;
+  font-family: 'Inter', sans-serif;
+}
   @layer base {
     :root {
       --background: 0 0% 100%;
