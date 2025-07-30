@@ -3,7 +3,7 @@ import { auth } from '../firebase.config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { Mail, Lock, Sparkles, ArrowRight } from 'lucide-react';
-import loginImage from '../assets/login.png'; // <-- Import the image
+import loginImage from '../assets/login.png'; // Make sure the image exists
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -26,7 +26,7 @@ export default function Login() {
         headers: { Authorization: `Bearer ${idToken}` },
       });
 
-      nav('/Dashboard');
+      nav('/dashboard'); // ✅ use lowercase route
     } catch (err) {
       alert(err.message);
     }
@@ -35,6 +35,7 @@ export default function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 p-6">
       <div className="flex w-full max-w-6xl bg-white rounded-3xl shadow-2xl overflow-hidden">
+        
         {/* Left Side - Image */}
         <div className="w-1/2 bg-gradient-to-br from-purple-100 to-pink-100 p-8 flex items-center justify-center">
           <img src={loginImage} alt="Login visual" className="w-full max-w-sm animate-fade-in" />
@@ -49,6 +50,7 @@ export default function Login() {
             <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Level Up Login</h2>
           </div>
           <p className="text-center text-gray-600 mb-6">Unlock your financial journey!</p>
+          
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="relative">
               <div className="absolute left-3 top-3 text-purple-500">
@@ -84,6 +86,7 @@ export default function Login() {
               <ArrowRight className="w-5 h-5" />
             </button>
           </form>
+
           <p className="mt-6 text-center text-gray-600">
             Don’t have an account?{' '}
             <a href="/register" className="text-purple-600 hover:underline font-semibold">Register</a>
